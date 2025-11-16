@@ -8,6 +8,7 @@
     "start": "cd auth/server && node server.js",
     "build-client": "cd client && npm run build",
     "build-and-serve": "node scripts/deploy-local.js",
+    "build:gh-pages": "node scripts/gh-pages-build.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

@@ -1,0 +1,19 @@
+node_modules/
+dist/
+*.log
+.env
+.env.local
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.next/
+out/
+build/
+tmp_*/
+1vi.z3r0/
+
+# Keep docs/ for GitHub Pages
+# !docs/
