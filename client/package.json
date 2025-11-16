@@ -7,7 +7,6 @@
     "dev": "vite",
     "build": "vite build",
     "build:dev": "vite build --mode development",
-    "build:gh-pages": "VITE_DISABLE_AUTH=true VITE_BASE_PATH=/ node -e \"process.env.VITE_OUT_DIR='../docs'; require('child_process').execSync('vite build', {stdio: 'inherit'})\"",
     "lint": "eslint .",
     "preview": "vite preview"
   },

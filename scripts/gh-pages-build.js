@@ -24,29 +24,29 @@ console.log('📦 Building for GitHub Pages...\n');
 
 const clientDir = path.join(__dirname, '..', 'client');
 const docsDir = path.join(__dirname, '..', 'docs');
+const nojekyllPath = path.join(docsDir, '.nojekyll');
 
 // Set environment variables
 process.env.VITE_DISABLE_AUTH = 'true';
-process.env.VITE_BASE_PATH = '/'; // adjust if deploying to subdirectory
 
 try {
-  // Build with Vite, output to docs/
-  console.log('🔨 Running Vite build...');
+  // Build with Vite
+  console.log('🔨 Running Vite build to docs/...');
   execSync(
-    `cd "${clientDir}" && vite build --outDir "${docsDir}"`,
+    `cd "${clientDir}" && npm run build`,
     { stdio: 'inherit' }
   );
 
-  // Create .nojekyll if it doesn't exist
-  const nojekyllPath = path.join(docsDir, '.nojekyll');
-  if (!fs.existsSync(nojekyllPath)) {
-    fs.writeFileSync(nojekyllPath, '');
-    console.log('✅ Created .nojekyll in docs/');
+  // Create .nojekyll
+  if (!fs.existsSync(docsDir)) {
+    fs.mkdirSync(docsDir, { recursive: true });
   }
+  fs.writeFileSync(nojekyllPath, '');
+  console.log('\n✅ Created .nojekyll');
 
   console.log('\n✅ Build complete! docs/ folder ready for GitHub Pages.\n');
   console.log('📝 Next steps:');
-  console.log('   1. git add docs/');
+  console.log('   1. git add docs/ .nojekyll');
   console.log('   2. git commit -m "Build for GitHub Pages"');
   console.log('   3. git push');
   console.log('   4. Go to repo Settings > Pages');
@@ -56,3 +56,4 @@ try {
   console.error('❌ Build failed:', err.message);
   process.exit(1);
 }
+
