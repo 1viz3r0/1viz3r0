@@ -1,0 +1,52 @@
+{
+  "manifest_version": 3,
+  "name": "ONE-Go Security",
+  "version": "1.0.0",
+  "description": "Complete web security suite with page scanning, download protection, and privacy tools",
+  "author": "ONE-Go Security",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "downloads",
+    "tabs",
+    "webNavigation",
+    "notifications",
+    "declarativeNetRequest",
+    "scripting",
+    "identity"
+  ],
+  "host_permissions": [
+    "http://localhost:5000/*",
+    "<all_urls>"
+  ],
+  "action": {
+    "default_popup": "extension-popup.html",
+    "default_icon": {
+      "16": "logo.png",
+      "48": "logo.png",
+      "128": "logo.png"
+    }
+  },
+  "icons": {
+    "16": "logo.png",
+    "48": "logo.png",
+    "128": "logo.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["logo.png", "logo.svg"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

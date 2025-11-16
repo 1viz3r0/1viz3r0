@@ -1,0 +1,449 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 215 28% 10%;
+    --foreground: 210 40% 98%;
+
+    --card: 215 25% 15%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 215 25% 15%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217 91% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217 91% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 45 93% 47%;
+    --warning-foreground: 0 0% 100%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 217 91% 50%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html , body ,#root {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    background: #000000 !important;
+    overflow-x: hidden;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    background: #000000 !important;
+    overflow-x: hidden;
+    @apply text-foreground;
+    color: hsl(var(--foreground));
+  }
+
+  #root {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    background: #000000 !important;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Global font styles - apply to text elements only */
+  body, p, span, div, label, a, h1, h2, h3, h4, h5, h6, li, td, th {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 15px !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    line-height: normal !important;
+  }
+
+  /* Apply gradient text to ALL text elements - comprehensive coverage */
+  /* Exclude only elements with glassmorphic backgrounds (detected via style attribute) */
+  p:not([style*="backgroundColor"]):not([style*="background"]),
+  span:not([style*="backgroundColor"]):not([style*="background"]),
+  label:not([style*="backgroundColor"]):not([style*="background"]),
+  a:not([style*="backgroundColor"]):not([style*="background"]),
+  h1:not([style*="backgroundColor"]):not([style*="background"]),
+  h2:not([style*="backgroundColor"]):not([style*="background"]),
+  h3:not([style*="backgroundColor"]):not([style*="background"]),
+  h4:not([style*="backgroundColor"]):not([style*="background"]),
+  h5:not([style*="backgroundColor"]):not([style*="background"]),
+  h6:not([style*="backgroundColor"]):not([style*="background"]),
+  li:not([style*="backgroundColor"]):not([style*="background"]),
+  td:not([style*="backgroundColor"]):not([style*="background"]),
+  th:not([style*="backgroundColor"]):not([style*="background"]),
+  /* Ensure all text classes get gradient */
+  [class*="text-muted-foreground"]:not([style*="backgroundColor"]):not([style*="background"]),
+  [class*="text-foreground"]:not([style*="backgroundColor"]):not([style*="background"]),
+  [class*="CardDescription"]:not([style*="backgroundColor"]):not([style*="background"]),
+  /* Badge text should get gradient - target divs with badge classes */
+  [class*="Badge"]:not([style*="backgroundColor"]):not([style*="background"]),
+  /* Ensure text inside badges with background color classes gets gradient */
+  div[class*="bg-primary"]:not([style*="backgroundColor"]):not([style*="background"]),
+  div[class*="bg-success"]:not([style*="backgroundColor"]):not([style*="background"]),
+  div[class*="bg-warning"]:not([style*="backgroundColor"]):not([style*="background"]),
+  div[class*="bg-destructive"]:not([style*="backgroundColor"]):not([style*="background"]),
+  div[class*="bg-secondary"]:not([style*="backgroundColor"]):not([style*="background"]),
+  /* Ensure headings with font-bold get gradient text */
+  h1[class*="font-bold"]:not([style*="backgroundColor"]):not([style*="background"]),
+  h2[class*="font-bold"]:not([style*="backgroundColor"]):not([style*="background"]),
+  h3[class*="font-bold"]:not([style*="backgroundColor"]):not([style*="background"]),
+  h4[class*="font-bold"]:not([style*="backgroundColor"]):not([style*="background"]),
+  h5[class*="font-bold"]:not([style*="backgroundColor"]):not([style*="background"]),
+  h6[class*="font-bold"]:not([style*="backgroundColor"]):not([style*="background"]) {
+    background-image: linear-gradient(90deg, #413986 0%, #DCDAEE 100%) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: #DCDAEE !important;
+  }
+  
+  /* Apply gradient to buttons, inputs, textareas, selects WITHOUT glassmorphic backgrounds */
+  button:not([style*="backgroundColor"]):not([style*="background"]):not([role="switch"]),
+  input:not([style*="backgroundColor"]):not([style*="background"]):not([type="file"]):not([role="switch"]),
+  textarea:not([style*="backgroundColor"]):not([style*="background"]),
+  select:not([style*="backgroundColor"]):not([style*="background"]) {
+    background-image: linear-gradient(90deg, #413986 0%, #DCDAEE 100%) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: #DCDAEE !important;
+  }
+  
+  /* Glassmorphic elements - apply gradient to TEXT CONTENT only, preserve background */
+  /* CRITICAL: background-image with background-clip: text only affects text, background-color shows through */
+  input[style*="backgroundColor"]:not([role="switch"]),
+  textarea[style*="backgroundColor"],
+  button[style*="backgroundColor"]:not([role="switch"]),
+  select[style*="backgroundColor"],
+  /* Also match buttons with glassmorphic classes from Button component */
+  button[class*="border-white"]:not([role="switch"]) {
+    /* Apply gradient ONLY to text - background-color from inline styles will show through */
+    /* background-clip: text means background-image only affects text, background-color shows in padding */
+    background-image: linear-gradient(90deg, #413986 0%, #DCDAEE 100%) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: #DCDAEE !important;
+    /* CRITICAL: Do NOT override background-color - let inline styles handle it */
+    /* The background-color from inline styles will be visible in the padding area */
+    /* Ensure text is visible even if gradient fails */
+    text-shadow: 0 0 1px rgba(220, 218, 238, 0.5);
+  }
+  
+  /* Apply gradient to text inside cards and other containers */
+  [class*="card"] p:not([style*="backgroundColor"]):not([style*="background"]),
+  [class*="card"] span:not([style*="backgroundColor"]):not([style*="background"]),
+  [class*="card"] label:not([style*="backgroundColor"]):not([style*="background"]),
+  [class*="card"] h1:not([style*="backgroundColor"]):not([style*="background"]),
+  [class*="card"] h2:not([style*="backgroundColor"]):not([style*="background"]),
+  [class*="card"] h3:not([style*="backgroundColor"]):not([style*="background"]),
+  [class*="card"] h4:not([style*="backgroundColor"]):not([style*="background"]),
+  [class*="card"] h5:not([style*="backgroundColor"]):not([style*="background"]),
+  [class*="card"] h6:not([style*="backgroundColor"]):not([style*="background"]),
+  [class*="card"] td:not([style*="backgroundColor"]):not([style*="background"]),
+  [class*="card"] th:not([style*="backgroundColor"]):not([style*="background"]),
+  [class*="Card"] p:not([style*="backgroundColor"]):not([style*="background"]),
+  [class*="Card"] span:not([style*="backgroundColor"]):not([style*="background"]),
+  [class*="Card"] label:not([style*="backgroundColor"]):not([style*="background"]),
+  [class*="Card"] h1:not([style*="backgroundColor"]):not([style*="background"]),
+  [class*="Card"] h2:not([style*="backgroundColor"]):not([style*="background"]),
+  [class*="Card"] h3:not([style*="backgroundColor"]):not([style*="background"]),
+  [class*="Card"] h4:not([style*="backgroundColor"]):not([style*="background"]),
+  [class*="Card"] h5:not([style*="backgroundColor"]):not([style*="background"]),
+  [class*="Card"] h6:not([style*="backgroundColor"]):not([style*="background"]),
+  [class*="Card"] td:not([style*="backgroundColor"]):not([style*="background"]),
+  [class*="Card"] th:not([style*="backgroundColor"]):not([style*="background"]) {
+    background-image: linear-gradient(90deg, #413986 0%, #DCDAEE 100%) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: #DCDAEE !important;
+  }
+  
+  /* CRITICAL: Ensure table cells (td, th) get gradient text even when inside containers with backgroundColor */
+  /* Table cells should always get gradient text regardless of parent container styles */
+  td:not([style*="backgroundColor"]):not([style*="background"]),
+  th:not([style*="backgroundColor"]):not([style*="background"]),
+  /* Ensure table cells with text-muted-foreground class get gradient text */
+  td[class*="text-muted-foreground"]:not([style*="backgroundColor"]):not([style*="background"]),
+  th[class*="text-muted-foreground"]:not([style*="backgroundColor"]):not([style*="background"]),
+  /* Ensure table cells with text-center class get gradient text */
+  td[class*="text-center"]:not([style*="backgroundColor"]):not([style*="background"]),
+  th[class*="text-center"]:not([style*="backgroundColor"]):not([style*="background"]),
+  /* Ensure table cells with capitalize class get gradient text */
+  td[class*="capitalize"]:not([style*="backgroundColor"]):not([style*="background"]),
+  th[class*="capitalize"]:not([style*="backgroundColor"]):not([style*="background"]),
+  /* Ensure all table elements get gradient text - high specificity */
+  table td:not([style*="backgroundColor"]):not([style*="background"]),
+  table th:not([style*="backgroundColor"]):not([style*="background"]),
+  thead th:not([style*="backgroundColor"]):not([style*="background"]),
+  tbody td:not([style*="backgroundColor"]):not([style*="background"]) {
+    background-image: linear-gradient(90deg, #413986 0%, #DCDAEE 100%) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: #DCDAEE !important;
+  }
+  
+  /* CRITICAL: Ensure Badge components get gradient text */
+  /* Badges have background colors from Tailwind classes (bg-success, bg-warning, etc.) but text should still get gradient */
+  /* Target Badge text specifically - Badges are divs with rounded-full and specific background classes */
+  /* High specificity to override Tailwind text color classes */
+  div[class*="rounded-full"][class*="border"]:not([style*="backgroundColor"]):not([style*="background"]),
+  /* Ensure text with Tailwind color classes gets gradient text - these are used in Badge components */
+  [class*="text-success-foreground"]:not([style*="backgroundColor"]):not([style*="background"]),
+  [class*="text-warning-foreground"]:not([style*="backgroundColor"]):not([style*="background"]),
+  [class*="text-primary-foreground"]:not([style*="backgroundColor"]):not([style*="background"]),
+  [class*="text-destructive-foreground"]:not([style*="backgroundColor"]):not([style*="background"]),
+  [class*="text-secondary-foreground"]:not([style*="backgroundColor"]):not([style*="background"]),
+  /* Ensure badges with bg-* classes get gradient text on their content */
+  div[class*="bg-success"][class*="rounded-full"]:not([style*="backgroundColor"]):not([style*="background"]),
+  div[class*="bg-warning"][class*="rounded-full"]:not([style*="backgroundColor"]):not([style*="background"]),
+  div[class*="bg-destructive"][class*="rounded-full"]:not([style*="backgroundColor"]):not([style*="background"]),
+  div[class*="bg-secondary"][class*="rounded-full"]:not([style*="backgroundColor"]):not([style*="background"]),
+  div[class*="bg-primary"][class*="rounded-full"]:not([style*="backgroundColor"]):not([style*="background"]) {
+    background-image: linear-gradient(90deg, #413986 0%, #DCDAEE 100%) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: #DCDAEE !important;
+  }
+  
+  
+  /* Exceptions: elements that should not have gradient text */
+  input::placeholder,
+  textarea::placeholder,
+  select::placeholder {
+    background: none !important;
+    background-image: none !important;
+    background-clip: unset !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: unset !important;
+    color: hsl(var(--muted-foreground)) !important;
+  }
+  
+  /* SVG elements should not get gradient text */
+  svg,
+  svg * {
+    background-image: none !important;
+    background-clip: unset !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: unset !important;
+    color: inherit !important;
+  }
+  
+  /* Images should not get gradient */
+  img,
+  canvas,
+  video {
+    background-image: none !important;
+    background-clip: unset !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: unset !important;
+    color: inherit !important;
+  }
+  
+  /* Switch component should not get gradient text or conflicting styles */
+  /* Ensure switch styles are preserved and not overridden */
+  [role="switch"] {
+    /* Preserve switch background and styles - don't apply gradient text */
+    background-image: none !important;
+    background-clip: unset !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: unset !important;
+    /* CRITICAL: Ensure background-color from inline styles is preserved */
+    /* Don't override it - let inline styles handle the glassmorphic background */
+  }
+  
+  /* Switch thumb should not get any text styles */
+  [role="switch"] > * {
+    background-image: none !important;
+    background-clip: unset !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: unset !important;
+  }
+  
+  /* Cards preserve their glassmorphic background from inline styles */
+  /* No CSS rules needed - cards get backgroundColor from component inline styles */
+  
+  /* Font styles for buttons, textareas, and inputs */
+  button,
+  textarea,
+  input:not([type="file"]),
+  [role="button"],
+  [type="button"],
+  [type="submit"],
+  [type="reset"],
+  select {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 15px !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    line-height: normal !important;
+  }
+  
+  /* Select elements - ensure they get gradient text if not glassmorphic */
+  select:not([style*="background"]) {
+    background-image: linear-gradient(90deg, #413986 0%, #DCDAEE 100%) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: #DCDAEE !important; /* Fallback color */
+  }
+
+  /* Ensure divs and containers don't get text styles applied */
+  div:not([class*="Badge"]):not([class*="card"]):not([class*="Card"]),
+  section, article, main, header, footer, aside, nav {
+    color: inherit;
+  }
+  
+  /* Ensure all cards have glassmorphic UI - fallback for any missing */
+  [class*="card"]:not([style*="backgroundColor"]),
+  [class*="Card"]:not([style*="backgroundColor"]) {
+    /* Cards should have backgroundColor from component inline styles */
+    /* If missing, ensure they get it as fallback */
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    background-blend-mode: plus-lighter !important;
+    box-shadow: -11.15px -10.392px 48px -12px rgba(0, 0, 0, 0.15), -1.858px -1.732px 12px -8px rgba(0, 0, 0, 0.15), 1.858px 1.732px 8px 0 rgba(255, 255, 255, 0.12) inset, 0.929px 0.866px 4px 0 rgba(255, 255, 255, 0.12) inset !important;
+    backdrop-filter: blur(2px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.33) !important;
+    border-radius: 23px !important;
+  }
+  
+  /* Ensure buttons with glassmorphic classes get glassmorphic UI even if style attribute doesn't match */
+  button[class*="border-white"]:not([role="switch"]):not([style*="backgroundColor"]) {
+    /* Fallback: ensure buttons get glassmorphic UI if inline styles aren't applied */
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    background-blend-mode: plus-lighter !important;
+    box-shadow: -11.15px -10.392px 48px -12px rgba(0, 0, 0, 0.15), -1.858px -1.732px 12px -8px rgba(0, 0, 0, 0.15), 1.858px 1.732px 8px 0 rgba(255, 255, 255, 0.12) inset, 0.929px 0.866px 4px 0 rgba(255, 255, 255, 0.12) inset !important;
+    backdrop-filter: blur(2px) !important;
+  }
+}
+
+/* Sonner Toast Glassmorphic UI */
+[data-sonner-toast],
+[data-sonner-toast] > div {
+  border-radius: 23px !important;
+  border: 1px solid rgba(255, 255, 255, 0.33) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  background-blend-mode: plus-lighter !important;
+  box-shadow: -11.15px -10.392px 48px -12px rgba(0, 0, 0, 0.15), -1.858px -1.732px 12px -8px rgba(0, 0, 0, 0.15), 1.858px 1.732px 8px 0 rgba(255, 255, 255, 0.12) inset, 0.929px 0.866px 4px 0 rgba(255, 255, 255, 0.12) inset !important;
+  backdrop-filter: blur(2px) !important;
+}
+
+/* Sonner Toast Error/Destructive variant */
+[data-sonner-toast][data-type="error"],
+[data-sonner-toast][data-type="error"] > div {
+  background: rgba(239, 68, 68, 0.1) !important;
+}
+
+/* Sonner Toast Text Gradient - Target all text elements with high specificity */
+[data-sonner-toast] [data-title],
+[data-sonner-toast] [data-description],
+[data-sonner-toast] .sonner-toast-title,
+[data-sonner-toast] .sonner-toast-description,
+[data-sonner-toast] .sonner-toast-title-gradient,
+[data-sonner-toast] .sonner-toast-description-gradient,
+[data-sonner-toast] .sonner-toast-gradient-text > *,
+[data-sonner-toast] > div > div,
+[data-sonner-toast] > div > div > div,
+[data-sonner-toast] span:not([class*="icon"]):not([class*="close"]):not([role="button"]),
+[data-sonner-toast] div:not([class*="icon"]):not([class*="close"]):not([role="button"]) {
+  background-image: linear-gradient(90deg, #413986 0%, #DCDAEE 100%) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: #DCDAEE !important;
+}
+
+/* Universal Sonner Toast Text Gradient - catch all text content (lower specificity, applied after exclusions) */
+[data-sonner-toast] *:not(button):not([role="button"]):not(svg):not([class*="icon"]):not([class*="close"]):not([class*="action"]):not([class*="cancel"]):not([class*="button"]) {
+  background-image: linear-gradient(90deg, #413986 0%, #DCDAEE 100%) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: #DCDAEE !important;
+}
+
+/* Exclude icons and buttons from gradient */
+[data-sonner-toast] [class*="icon"],
+[data-sonner-toast] [class*="close"],
+[data-sonner-toast] button,
+[data-sonner-toast] svg {
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: unset !important;
+  color: inherit !important;
+}
+
+/* Radix Toast Text Gradient (for useToast hook) */
+[data-radix-toast] [data-title],
+[data-radix-toast] [data-description],
+[data-radix-toast] h3,
+[data-radix-toast] p,
+[data-radix-toast] span:not([class*="close"]),
+[data-radix-toast] div:not([class*="close"]) {
+  background-image: linear-gradient(90deg, #413986 0%, #DCDAEE 100%) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: #DCDAEE !important;
+}
+
+/* Exclude close button and icons from Radix toasts */
+[data-radix-toast] [class*="close"],
+[data-radix-toast] button,
+[data-radix-toast] svg {
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: unset !important;
+  color: inherit !important;
+}
