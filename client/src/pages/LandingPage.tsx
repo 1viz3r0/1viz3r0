@@ -8,12 +8,12 @@ import CyberScene from '@/components/CyberScene';
 
 // Placeholder partner logos
 const partnerLogos: LogoItem[] = [
-  { src: '/public/images/CodeVirus.png', alt: 'Partner 1', href: '#' },
-  { src: '/public/images/CodeVirus.png', alt: 'Partner 2', href: '#' },
-  { src: '/public/images/CodeVirus.png', alt: 'Partner 3', href: '#' },
-  { src: '/public/images/CodeVirus.png', alt: 'Partner 4', href: '#' },
-  { src: '/public/images/CodeVirus.png', alt: 'Partner 5', href: '#' },
-  { src: '/public/images/CodeVirus.png', alt: 'Partner 6', href: '#' },
+  { src: '/images/CodeVirus.png', alt: 'Partner 1', href: '#' },
+  { src: '/images/CodeVirus.png', alt: 'Partner 2', href: '#' },
+  { src: '/images/CodeVirus.png', alt: 'Partner 3', href: '#' },
+  { src: '/images/CodeVirus.png', alt: 'Partner 4', href: '#' },
+  { src: '/images/CodeVirus.png', alt: 'Partner 5', href: '#' },
+  { src: '/images/CodeVirus.png', alt: 'Partner 6', href: '#' },
 ];
 
 const LandingPage: React.FC = () => {
@@ -27,31 +27,30 @@ const LandingPage: React.FC = () => {
         <CyberNavbar />
         
         {/* Hero Section */}
-        <section className="min-h-screen flex items-center justify-center px-4 pt-32">
-          <div className="container mx-auto text-center space-y-8 animate-fade-in">
-            <div className="flex items-center justify-center gap-4 mb-8">
-              <div className="h-px w-20 bg-gradient-to-r from-transparent via-foreground to-transparent" />
+        <section className="min-h-screen flex items-center justify-center px-4 pt-20 sm:pt-32">
+          <div className="container mx-auto text-center space-y-6 sm:space-y-8 animate-fade-in">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 mb-6 sm:mb-8">
+              <div className="hidden sm:block h-px w-20 bg-gradient-to-r from-transparent via-foreground to-transparent" />
               <div className="w-2 h-2 bg-foreground rounded-full" />
-              <h2 className="text-4xl font-bold metallic-text">SHELL & SHIELD</h2>
+              <h2 className="text-2xl sm:text-4xl font-bold metallic-text">SHELL & SHIELD</h2>
               <div className="w-2 h-2 bg-foreground rounded-full" />
-              <div className="h-px w-20 bg-gradient-to-l from-transparent via-foreground to-transparent" />
+              <div className="hidden sm:block h-px w-20 bg-gradient-to-l from-transparent via-foreground to-transparent" />
             </div>
             
-            <h1 className="text-6xl md:text-7xl font-bold leading-tight">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
               <span className="metallic-text">
-                Bridging the gap between theory<br />
-                and real-world in Modern CyberEra
+                Bridging the gap between theory and real-world in Modern CyberEra
               </span>
             </h1>
             
-            <div className="flex items-center justify-center gap-8 mt-12">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mt-8 sm:mt-12">
               <Button 
                 onClick={() => navigate('/login')}
-                className="glass-button metallic-text font-bold text-lg px-12 py-6 border border-white/20 rounded-full"
+                className="glass-button metallic-text font-bold text-base sm:text-lg px-8 sm:px-12 py-4 sm:py-6 border border-white/20 rounded-full w-full sm:w-auto"
               >
                 GET STARTED
               </Button>
-              <button className="metallic-text text-lg font-medium hover:text-foreground transition-colors">
+              <button className="metallic-text text-base sm:text-lg font-medium hover:text-foreground transition-colors">
                 LEARN MORE
               </button>
             </div>
