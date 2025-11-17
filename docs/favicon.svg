@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none">
+  <defs>
+    <style>
+      @media (prefers-color-scheme: dark) {
+        .bg { fill: #0f0f0f; }
+        .icon { fill: #e0e0e0; stroke: #666; }
+      }
+      @media (prefers-color-scheme: light) {
+        .bg { fill: #ffffff; }
+        .icon { fill: #1a1a1a; stroke: #999; }
+      }
+    </style>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="256" height="256" class="bg"/>
+  
+  <!-- Metallic H Icon -->
+  <g class="icon" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+    <!-- Left vertical bar -->
+    <rect x="50" y="60" width="25" height="140" rx="4"/>
+    
+    <!-- Right vertical bar -->
+    <rect x="181" y="60" width="25" height="140" rx="4"/>
+    
+    <!-- Horizontal connecting bar (middle) -->
+    <rect x="50" y="125" width="156" height="20" rx="3"/>
+    
+    <!-- Gradient overlay for metallic effect -->
+    <defs>
+      <linearGradient id="metallic" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#c0c0c0;stop-opacity:0.4" />
+        <stop offset="50%" style="stop-color:#ffffff;stop-opacity:0.1" />
+        <stop offset="100%" style="stop-color:#808080;stop-opacity:0.3" />
+      </linearGradient>
+    </defs>
+    <rect x="40" y="50" width="176" height="160" rx="12" fill="url(#metallic)" opacity="0.6"/>
+  </g>
+</svg>
