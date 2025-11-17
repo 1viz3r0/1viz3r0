@@ -28,11 +28,11 @@ const nojekyllPath = path.join(docsDir, '.nojekyll');
 
 // Set environment variables
 process.env.VITE_DISABLE_AUTH = 'true';
-process.env.VITE_BASE_PATH = '/1viz3r0/';
+process.env.VITE_BASE_PATH = '/'; // root path for custom domain
 
 try {
   // Build with Vite
-  console.log('🔨 Running Vite build to docs/ with base path /1viz3r0/...');
+  console.log('🔨 Running Vite build to docs/ with base path /...');
   execSync(
     `cd "${clientDir}" && npm run build`,
     { stdio: 'inherit' }
