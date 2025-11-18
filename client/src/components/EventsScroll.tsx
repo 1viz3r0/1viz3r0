@@ -97,30 +97,30 @@ export const EventsScroll: React.FC = () => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Navigation Arrows */}
+      {/* Navigation Arrows - Hidden on mobile */}
       <button
         onClick={() => scroll('left')}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 glass-card p-3 rounded-full border border-white/20 hover:bg-white/10 transition-all"
+        className="hidden sm:flex absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 glass-card p-2 sm:p-3 rounded-full border border-white/20 hover:bg-white/10 transition-all"
         aria-label="Scroll left"
       >
-        <ChevronLeft className="w-6 h-6 text-foreground" />
+        <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-foreground" />
       </button>
       
       <button
         onClick={() => scroll('right')}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 glass-card p-3 rounded-full border border-white/20 hover:bg-white/10 transition-all"
+        className="hidden sm:flex absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 glass-card p-2 sm:p-3 rounded-full border border-white/20 hover:bg-white/10 transition-all"
         aria-label="Scroll right"
       >
-        <ChevronRight className="w-6 h-6 text-foreground" />
+        <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-foreground" />
       </button>
 
       {/* Fade gradients */}
-      <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-      <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+      <div className="absolute inset-y-0 left-0 w-16 sm:w-24 md:w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+      <div className="absolute inset-y-0 right-0 w-16 sm:w-24 md:w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
       
       <div 
         ref={scrollContainerRef}
-        className="flex gap-8 overflow-x-auto scrollbar-hide "
+        className="flex gap-4 sm:gap-6 md:gap-8 overflow-x-auto scrollbar-hide px-2 sm:px-4"
         style={{ 
           scrollbarWidth: 'none',
           msOverflowStyle: 'none',
