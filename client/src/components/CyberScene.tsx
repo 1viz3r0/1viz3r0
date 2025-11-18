@@ -1,5 +1,5 @@
 import { Canvas, useFrame, useThree, extend } from "@react-three/fiber";
-import { useRef, useMemo, useEffect, useState } from "react";
+import { useRef, useMemo, useEffect } from "react";
 import * as THREE from "three";
 import { OrbitControls } from '@react-three/drei';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
@@ -466,34 +466,21 @@ const Scene = () => {
 };
 
 export default function CyberScene() {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
   return (
     <div className="fixed inset-0 w-full h-full bg-[radial-gradient(ellipse_at_center,_#0a0a1a_0%,_#000002_70%)]">
-      {!isMobile && (
-        <Canvas
-          camera={{ position: [-6.5, 4.0, 6.5], fov: 60, near: 0.5, far: 1000 }}
-          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
-          gl={{ 
-            antialias: true,
-            alpha: true,
-            powerPreference: "high-performance",
-            toneMapping: THREE.ACESFilmicToneMapping,
-            toneMappingExposure: 1.0
-          }}
-        >
-          <Scene />
-        </Canvas>
-      )}
+      <Canvas
+        camera={{ position: [-6.5, 4.0, 6.5], fov: 60, near: 0.5, far: 1000 }}
+        style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
+        gl={{ 
+          antialias: true,
+          alpha: true,
+          powerPreference: "high-performance",
+          toneMapping: THREE.ACESFilmicToneMapping,
+          toneMappingExposure: 1.0
+        }}
+      >
+        <Scene />
+      </Canvas>
     </div>
   );
 }
