@@ -100,7 +100,7 @@ const LandingPage: React.FC = () => {
         {/* Footer */}
         <footer className="py-12 px-4 border-t border-white/10">
           <div className="container mx-auto">
-            <div className="grid md:grid-cols-4 gap-8 mb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-8">
               {/* Logo Section */}
               <div className="flex items-start">
                 <div className="glass-card p-6 w-20 h-20 flex items-center justify-center">
