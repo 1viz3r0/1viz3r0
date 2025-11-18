@@ -468,7 +468,7 @@ const Scene = () => {
 export default function CyberScene() {
   const [isMobile, setIsMobile] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
